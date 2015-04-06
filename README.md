@@ -7,11 +7,11 @@ This script takes in videos of powerpoint lectures and splits it into the indivi
 ## Installation guide for Mac OS X
 * Install numpy > 1.9 with
 
-	pip install numpy
+		pip install numpy
 * Use brew to install opencv
 
-	brew tap homebrew/science
-	brew install opencv
+		brew tap homebrew/science
+		brew install opencv
 
 ##Example Usage
 	VidToSlides.py ./test.avi
