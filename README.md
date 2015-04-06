@@ -6,6 +6,8 @@ This script takes in videos of powerpoint lectures and splits it into the indivi
 
 ## Installation guide for Mac OS X
 
+### DO NOT USE A VIRTUALENV
+
 * Install numpy > 1.9 with
 
 		pip install numpy
