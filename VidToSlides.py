@@ -1,10 +1,20 @@
 #!/usr/bin/env python
 import numpy as np
-import cv2
 import math
 import sys
 import cv2
-cap = cv2.VideoCapture(sys.argv[1])
+import subprocess
+#download youtube video with youtube-dl
+url = sys.argv[1]
+name = subprocess.check_output(['youtube-dl --id  --get-filename %s' % (url)] ,shell=True) 
+download = subprocess.check_output(['youtube-dl --id  -f mp4 %s' % (url)] ,shell=True)
+
+location = "./" + name 
+location = location[:-1]
+print "ffmpeg -i %s -codec copy %s.avi" % (location,location)
+subprocess.check_output(["ffmpeg -i %s -codec copy %s.avi" % (location,location)],shell=True)
+location = location + '.avi'
+cap = cv2.VideoCapture(location)
 import sys
 prev = None
 runOnce = False
