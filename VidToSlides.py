@@ -133,7 +133,7 @@ def crop_to_contour(frame, contour):
     convex = cv2.convexHull(contour)
     cv2.fillConvexPoly(mask, contour, (255,255,255))
     cv2.imshow("edges",mask)
-    cv2.waitKey(10)
+    #cv2.waitKey(10)
     frame = cv2.bitwise_and(frame, frame, mask=mask)
     #print "cropped"
     #print frame
@@ -144,6 +144,8 @@ def crop(image, contour):
     if contour.size == 0:
         return image
     x,y,w,h = cv2.boundingRect(contour)
+    y = y if y - 5 > 0 else y - 5
+    x = x if x - 5 > 0 else x - 5
     return image[y: y + h, x: x + w]
 oldFrame = None
 while True:
@@ -197,11 +199,11 @@ while True:
 
                 average_val = math.fabs(int((avg + (0 * avg))/num_frames))
                 
-                cv2.waitKey(1)
+                #cv2.waitKey(1)
 
                 print "current %s avg %s diff %s avg_threshold %s" % (diff, average_val, math.fabs(average_val - diff), average_val/4)
                 #print "diff %s avg %s" % (diff, average_val)
-                if math.fabs(average_val - diff) > average_val / 8:
+                if math.fabs(average_val - diff) > average_val / 10:
                     cv2.imshow('frame',frame)
                     cv2.imwrite(prefix + str(count) + ".jpg", oldFrame)
                     count += 1
