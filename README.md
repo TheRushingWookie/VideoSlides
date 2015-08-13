@@ -1,6 +1,9 @@
 # VideoSlides
 
 This script takes in videos of powerpoint lectures and splits it into the individual slides by measuring the change in the number of corners in the image.
+
+* Runs on Python 2.6
+
 * The video file should be a .avi file.
 * REQUIRES OPENCV AND NUMPY
 
